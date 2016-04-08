@@ -8,10 +8,12 @@ function hookup(obj) {
 	'use strict';
 	(function ($) {
 		$(document).ready(function () {
-			var i = 0;
+			var i = 0,
+				runFunction;
 			for (i = 0; i < obj.task.length; i = i + 1) {
-				if ($.isFunction(eval(obj.task[i].run))) {
-					$(obj.el).on(obj.task[i].event, obj.task[i].element, eval(obj.task[i].run));
+				runFunction = eval(obj.task[i].run);
+				if ($.isFunction(runFunction)) {
+					$(obj.el).on(obj.task[i].event, obj.task[i].element, runFunction);
 				}
 			}
 		});

@@ -10,7 +10,7 @@ function hookup(obj) {
 		$(document).ready(function () {
 			var i = 0,
 				runFunction;
-			for (i = 0; i < obj.task.length; i = i + 1) {
+			for (i = 0; i < obj.task.length; ++i) {
 				runFunction = eval(obj.task[i].run);
 				if ($.isFunction(runFunction)) {
 					$(obj.el).on(obj.task[i].event, obj.task[i].element, runFunction);

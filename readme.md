@@ -1,9 +1,10 @@
 # $.linkup.js
 
 ## 概要
-$.linkup.jsはmvcフレームワークなどで採用されている、eventと関数とのひも付けを簡易的な関数で提供します。  
-backbone.jsのviewを参考に少し拡張されたフォーマットを採用しています。
-javascriptのイベントはバブリングでイベントを張ります。
+$.linkup.jsはmvcフレームワークなどで採用されている、eventと関数とのひも付け部分のみの機能です。  
+backbone.jsのviewを参考に少し拡張されたフォーマットを採用しています（互換性はありません）  
+javascriptのイベントはバブリングでイベントを張ります。  
+関数から this はオブジェクト内の 親DOMに当たる el になります。  
 
 ## 必要とするもの
 [jQuery](https://jquery.com/)

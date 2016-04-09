@@ -8,14 +8,14 @@
 			border: 1px solid #000;
 			padding: 20px;
 			margin-bottom: 10px;
-			width: 100px;
+			width: 320px;
 		}
 
 		.box02{
 			border: 1px solid #000;
 			padding: 20px;
 			margin-bottom: 10px;
-			width: 100px;
+			width: 320px;
 		}
 	</style>
 	<script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
@@ -37,12 +37,11 @@
 				}
 			]
 		});
-		function sample01() {
-			alert($(this).val());
+		function sample01(e) {
+			alert($(e.currentTarget).val());
 		}
-		function sample02() {
-			console.log($(this))
-			$('#text').html($(e.currentTarget).val());
+		function sample02(e) {
+			$(this).find('#text').html($(e.currentTarget).val());
 		}
 	</script>
 </head>

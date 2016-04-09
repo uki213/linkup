@@ -18,15 +18,15 @@ scriptタグから読み込ませて準備完了
 			el: 'elementDOM', // イベントを張る親DOMを指定（bubbling）
 			task: [
 				{
-					element: 'DOM', // 対象DOM
+					selector: 'DOM', // 対象DOM
 					event: 'eventName', // イベント名
-					run: 'functionName' // 関数名
+					handler: 'functionName' // 関数名
 				},
 				// 複数指定することができます
 				{
-					element: 'DOM',
+					selector: 'DOM',
 					event: 'eventName',
-					run: 'functionName'
+					handler: 'functionName'
 				}
 			]
 		});

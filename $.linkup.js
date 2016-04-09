@@ -7,8 +7,8 @@
 			$(document).ready(function () {
 				var i;
 				for (i = 0; i < obj.task.length; ++i) {
-					if (eval('typeof (' + obj.task[i].run + ')') === 'function') {
-						$(obj.el).on(obj.task[i].event, obj.task[i].element, $.proxy(eval(obj.task[i].run), $(obj.el)));
+					if (eval('typeof (' + obj.task[i].handler + ')') === 'function') {
+						$(obj.el).on(obj.task[i].event, obj.task[i].selector, $.proxy(eval(obj.task[i].handler), $(obj.el)));
 					}
 				}
 			});

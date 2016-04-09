@@ -8,7 +8,7 @@
 				var i;
 				for (i = 0; i < obj.task.length; ++i) {
 					if (eval('typeof (' + obj.task[i].run + ')') === 'function') {
-						$(obj.el).on(obj.task[i].event, obj.task[i].element, eval(obj.task[i].run));
+						$(obj.el).on(obj.task[i].event, obj.task[i].element, $.proxy(eval(obj.task[i].run), $(obj.el)));
 					}
 				}
 			});

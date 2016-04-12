@@ -34,14 +34,22 @@
 					selector: '#inputText',
 					event: 'keyup keydown input',
 					handler: 'sample02'
+				},
+				{
+					selector: '.box01',
+					event: 'ready',
+					handler: 'sample03'
 				}
 			]
 		});
 		function sample01(e) {
-			alert($(e.currentTarget).val());
+			alert(e);
 		}
 		function sample02(e) {
 			$(this).find('#text').html($(e.currentTarget).val());
+		}
+		function sample03() {
+			console.log('get ready!')
 		}
 	</script>
 </head>

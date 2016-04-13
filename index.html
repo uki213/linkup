@@ -28,12 +28,14 @@
 				{
 					selector: '.box01 button',
 					event: 'click',
-					handler: 'sample01'
+					handler: 'sample01',
+					render: 'sample11'
 				},
 				{
 					selector: '#inputText',
 					event: 'keyup keydown input',
-					handler: 'sample02'
+					handler: 'sample02',
+					render: 'sample12'
 				},
 				{
 					selector: '.box01',
@@ -44,12 +46,20 @@
 		});
 		function sample01(e) {
 			// alert(e);
+			return 1;
 		}
 		function sample02(e) {
 			$(this).find('#text').html($(e.currentTarget).val());
+			return e;
 		}
 		function sample03() {
 			console.log('get ready!')
+		}
+		function sample11(num) {
+			console.log(num);
+		}
+		function sample12(e) {
+			console.log(e);
 		}
 	</script>
 </head>

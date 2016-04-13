@@ -12,10 +12,16 @@
 				var i;
 				for (i = 0; i < obj.task.length; ++i) {
 					if (!checkStrIsFunction(obj.task[i].handler)) {continue;}
+					var renderFirstFuncStr = '';
+					var renderLastFuncStr = '';
+					if (checkStrIsFunction(obj.task[i].render)) {
+						renderFirstFuncStr = obj.task[i].render + '(';
+						renderLastFuncStr = ')';
+					}
 					var evalStr =
-						'(function(e){'+
+						'(function(e){'+renderFirstFuncStr+
 						obj.task[i].handler+
-						'(e)})';
+						'(e)'+renderLastFuncStr+'})';
 					$(obj.el).on(
 						obj.task[i].event,
 						obj.task[i].selector,

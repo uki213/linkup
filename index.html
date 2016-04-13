@@ -67,6 +67,8 @@
 	<script type="text/javascript">
 		$(function(){
 			$("#sample button").click();
+			$('#inputText').val('a').trigger($.Event( 'input', { keyCode: 65, which: 65 } )
+);
 		})
 	</script>
 </body>

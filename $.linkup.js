@@ -11,21 +11,20 @@
 			$(document).ready(function () {
 				var i;
 				for (i = 0; i < obj.task.length; ++i) {
-					if (checkStrIsFunction(obj.task[i].handler)) {
-						var evalStr =
-							'(function(e){'+
-							obj.task[i].handler+
-							'(e)})';
-						$(obj.el).on(
-							obj.task[i].event,
-							obj.task[i].selector,
-						 	$.proxy(
-								eval(evalStr),
-						  		$(obj.el)
-							)
-						);
-						$(obj.task[i].selector).trigger('ready');
-					}
+					if (!checkStrIsFunction(obj.task[i].handler)) {continue;}
+					var evalStr =
+						'(function(e){'+
+						obj.task[i].handler+
+						'(e)})';
+					$(obj.el).on(
+						obj.task[i].event,
+						obj.task[i].selector,
+					 	$.proxy(
+							eval(evalStr),
+					  		$(obj.el)
+						)
+					);
+					$(obj.task[i].selector).trigger('ready');
 				}
 			});
 		}

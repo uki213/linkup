@@ -15,20 +15,18 @@
 					var renderFirstFuncStr = '';
 					var renderLastFuncStr = '';
 					if (checkStrIsFunction(obj.task[i].render)) {
-						renderFirstFuncStr = obj.task[i].render + '(';
+						renderFirstFuncStr = obj.task[i].render + '.call($(obj.el), ';
 						renderLastFuncStr = ')';
 					}
 					var evalStr =
 						'(function(e){'+renderFirstFuncStr+
 						obj.task[i].handler+
-						'(e)'+renderLastFuncStr+'})';
+						'.call($(obj.el), e)'+renderLastFuncStr+'})';
+					console.log(evalStr);
 					$(obj.el).on(
 						obj.task[i].event,
 						obj.task[i].selector,
-					 	$.proxy(
-							eval(evalStr),
-					  		$(obj.el)
-						)
+						eval(evalStr)
 					);
 					$(obj.task[i].selector).trigger('ready');
 				}

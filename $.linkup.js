@@ -9,11 +9,15 @@
 				var i;
 				for (i = 0; i < obj.task.length; ++i) {
 					if (eval('typeof (' + obj.task[i].handler + ')') === 'function') {
+						var evalStr =
+							'(function(e){'+
+							obj.task[i].handler+
+							'(e)})';
 						$(obj.el).on(
 							obj.task[i].event,
 							obj.task[i].selector,
 						 	$.proxy(
-								eval(obj.task[i].handler),
+								eval(evalStr),
 						  		$(obj.el)
 							)
 						);

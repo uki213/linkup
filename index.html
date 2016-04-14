@@ -28,22 +28,22 @@
 				{
 					selector: '.box01 button',
 					event: 'click',
-					handler: 'sample01'
+					handler: sample01
 				},
 				{
 					selector: '#inputText',
 					event: 'keyup keydown input',
-					handler: 'sample02'
+					handler: sample02
 				},
 				{
 					selector: '.box01',
 					event: 'ready',
-					handler: 'sample03'
+					handler: sample03
 				}
 			]
 		});
 		function sample01(e) {
-			alert(e);
+			alert($(e.currentTarget).val());
 		}
 		function sample02(e) {
 			$(this).find('#text').html($(e.currentTarget).val());

@@ -20,13 +20,13 @@ scriptタグから読み込ませて準備完了
 				{
 					selector: 'DOM', // 対象DOM
 					event: 'eventName', // イベント名
-					handler: 'functionName' // 関数名
+					handler: functionName // 関数名
 				},
 				// 複数指定することができます
 				{
 					selector: 'DOM',
 					event: 'eventName',
-					handler: 'functionName'
+					handler: functionName
 				}
 			]
 		});

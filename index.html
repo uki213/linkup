@@ -21,36 +21,38 @@
 	<script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
 	<script src="$.linkup.js"></script>
 	<script>
-		$.linkup({
-			el: '#sample',
-			task: [
+		($(function(){
+			$.linkup({
+				el: '#sample',
+				task: [
+					{
+						selector: '.box01 button',
+						event: 'click',
+						handler: sample01
+					},
+					{
+						selector: '#inputText',
+						event: 'keyup keydown input',
+						handler: sample02
+					},
+					{
+						selector: '.box01',
+						event: 'ready',
+						handler: sample03
+					}
+				]
+			});
+			function sample01(e) {
+				alert($(e.currentTarget).val());
+			}
+			function sample02(e) {
+				$(this).find('#text').html($(e.currentTarget).val());
+			}
+			function sample03() {
+				console.log('get ready!')
+			}
+		}(jQuery)));
 
-				{
-					selector: '.box01 button',
-					event: 'click',
-					handler: sample01
-				},
-				{
-					selector: '#inputText',
-					event: 'keyup keydown input',
-					handler: sample02
-				},
-				{
-					selector: '.box01',
-					event: 'ready',
-					handler: sample03
-				}
-			]
-		});
-		function sample01(e) {
-			alert($(e.currentTarget).val());
-		}
-		function sample02(e) {
-			$(this).find('#text').html($(e.currentTarget).val());
-		}
-		function sample03() {
-			console.log('get ready!')
-		}
 	</script>
 </head>
 <body>

@@ -1,5 +1,6 @@
 // $.linkup.js (https://github.com/uki213/linkup)
 /*global jQuery */
+/*jslint evil: true*/
 (function ($) {
 	'use strict';
 	$.extend({

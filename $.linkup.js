@@ -2,16 +2,37 @@
 /*global jQuery */
 (function ($) {
 	'use strict';
+
+	/**
+	 * Linkup クラス
+	 * コンストラクタ
+	 * @param {String} obj.el イベントを張る親DOM
+	 * @param {Array} obj.task タスク配列
+	 */
+	function Linkup(obj) {
+		this.$el = $(obj.el);
+		this.tasks = obj.task;
+	}
+
+	/**
+	 * タスクデータを元にイベントを張る
+	 */
+	Linkup.prototype.bindEvents = function () {
+		for (var i = 0; i < this.tasks.length; i++) {
+			var task = this.tasks[i];
+
+			if (typeof task.handler === 'function') {
+				this.$el.on(task.event, task.selector, $.proxy(task.handler, this.$el));
+				$(task.selector, this.$el).trigger('ready');
+			}
+		}
+	};
+
 	$.extend({
 		linkup: function (obj) {
 			$(document).ready(function () {
-				var i;
-				for (i = 0; i < obj.task.length; i = i + 1) {
-					if (typeof obj.task[i].handler === 'function') {
-						$(obj.el).on(obj.task[i].event, obj.task[i].selector, $.proxy(obj.task[i].handler, $(obj.el)));
-						$(obj.task[i].selector).trigger('ready');
-					}
-				}
+				var linkup = new Linkup(obj);
+				linkup.bindEvents();
 			});
 		}
 	});

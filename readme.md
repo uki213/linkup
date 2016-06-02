@@ -2,7 +2,6 @@
 
 ![event => logic => action](http://uki213.github.io/linkup/document_image/linkupImg.png "event => logic => action")
 
-
 ## 概要
 $.linkup.jsはmvcフレームワークなどで採用されている、eventと関数とのひも付け部分のみの機能です。  
 backbone.jsのviewを参考に少し拡張されたフォーマットを採用しています（互換性はありません）  
@@ -13,13 +12,16 @@ javascriptのイベントはバブリングでイベントを張ります。
 $.linkupでは、javascriptの流れを event => logic => action の三つの工程で処理する考えに基づき作成されました。  
 浅いレベルではありますが、自分の考えではMVCはjavascriptに当てはまらず、
 どのようなフローがjavascriptに適しているかを考えた結果、この三つの工程にたどり着きました。  
-比較的Reactのfluxと似たような考え方かと思います。
+結果的にはReactのfluxと似たような考え方かと思います。  
+その他、logic部分を分離し処理したデータを一度、returnで出力することにより、
+UNITテストを行いやすくしたいという目的がありました。
 
 ### 概念
 
 eventはselectorで指定されたDOMに対してのフックさせるイベント名となり、
 そのイベントの発火を起因に、logicはデータを取りまとめreturnで出力します。
-actionはlogicからreturnで出力された値を引数で受け取り、最終段階の画面出力やcookie、APIアクセス等の出力系処理を行います
+actionはlogicからreturnで出力された値を引数で受け取り、最終段階の画面出力やcookie、
+APIアクセス等の出力系処理を行います
 
 ### 設計手法
 

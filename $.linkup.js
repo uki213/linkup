@@ -20,10 +20,11 @@
   Linkup.prototype.bindEvents = function () {
     for (var ti = 0; ti < this.tasks.length; ti++) {
       var task = this.tasks[ti]
+      var $el = this.$el
 
       if (typeof task.logic === 'function') {
-        task.organizeFunction = function (Element) {
-          var returnLogic = task.logic(Element)
+        task.organizeFunction = function (event) {
+          var returnLogic = task.logic.call($el, event)
           task.action(returnLogic)
         }
 

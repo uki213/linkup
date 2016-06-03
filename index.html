@@ -1,58 +1,73 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<style>
-		.box01{
-			border: 1px solid #000;
-			padding: 20px;
-			margin-bottom: 10px;
-			width: 320px;
-		}
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    .box01 {
+      border: 1px solid #000;
+      padding: 20px;
+      margin-bottom: 10px;
+      width: 320px;
+    }
 
-		.box02{
-			border: 1px solid #000;
-			padding: 20px;
-			margin-bottom: 10px;
-			width: 320px;
-		}
-	</style>
-	<script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
-	<script src="$.linkup.js"></script>
-	<script>
-		($(function(){
-			$.linkup({
-				el: '#sample',
-				task: [
-					{
-						selector: '.box01 button',
-						event: 'click',
-						logic: sample01,
-						action: test01
-					}
-				]
-			});
-			function sample01(e) {
-				return $(e.currentTarget).val();
-			}
-			function test01(text) {
-				alert(text);
-			}
-		}(jQuery)));
+    .box02 {
+      border: 1px solid #000;
+      padding: 20px;
+      margin-bottom: 10px;
+      width: 320px;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+  <script src="$.linkup.js"></script>
+  <script>
+    ($(function() {
+      $.linkup({
+        el: '#sample',
+        task: [{
+          selector: '.box01 button',
+          event: 'click',
+          logic: logic01,
+          action: action01
+        }, {
+          selector: '#inputText',
+          event: 'keyup keydown input',
+          logic: logic02,
+          action: action02
+        }]
+      });
 
-	</script>
+      function logic01(e) {
+        return $(e.currentTarget).val();
+      }
+
+      function action01(text) {
+        alert(text);
+      }
+
+      function logic02(e) {
+        return $(e.currentTarget).val()
+      }
+
+      function action02(text) {
+        $(this).find('#text').html(text)
+      }
+    }(jQuery)));
+  </script>
 </head>
+
 <body>
-	<div id="sample">
-		<div class="box01">
-			click button<br>
-			<button value="サンプルコードです">click</button>
-		</div>
-		<div class="box02">
-			<input type="text" id="inputText" placeholder="入力してください">
-			<p id="text"></p>
-		</div>
-	</div>
+  <div id="sample">
+    <div class="box01">
+      click button<br>
+      <button value="サンプルコードです">click</button>
+    </div>
+    <div class="box02">
+      <input type="text" id="inputText" placeholder="入力してください">
+      <p id="text"></p>
+    </div>
+  </div>
 </body>
+
 </html>

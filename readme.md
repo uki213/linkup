@@ -10,21 +10,16 @@ javascriptのイベントはバブリングでイベントを張ります。
 
 ### 制作理由
 $.linkupでは、javascriptの流れを event => logic => action の三つの工程で処理する考えに基づき作成されました。  
-浅いレベルではありますが、自分の考えではMVCはjavascriptに当てはまらず、
-どのようなフローがjavascriptに適しているかを考えた結果、この三つの工程にたどり着きました。  
-結果的にはReactのfluxと似たような考え方かと思います。  
-その他、logic部分を分離し処理したデータを一度、returnで出力することにより、
+特にlogic部分を分離し処理したデータを一度、returnで出力することにより、
 UNITテストを行いやすくしたいという目的がありました。
 
 ### 概念
-
 eventはselectorで指定されたDOMに対してのフックさせるイベント名となり、
 そのイベントの発火を起因に、logicはデータを取りまとめreturnで出力します。
 actionはlogicからreturnで出力された値を引数で受け取り、最終段階の画面出力やcookie、
 APIアクセス等の出力系処理を行います
 
 ### 設計手法
-
 簡単ではありますが以下の様な方法で設計すると考えやすいです。  
 動作の流れは、event => logic => actionですが、設計は逆にactionからになります。  
 actionでどのような出力を行うか設計を行い、そのために必要な情報を整理します。  
@@ -68,5 +63,4 @@ $.linkup関数にobjectを引数として渡す。
 -->
 
 ## Thanks
-
 [kt3k](https://github.com/kt3k), [ampcpmgp](https://github.com/ampcpmgp)
